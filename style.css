@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+html {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    min-height: 100vh;
+    margin-inline: 5rem;
+    margin-block: 5rem;
+    max-width: 1340px;
+}
+
+.header {
+    max-width: 880px;
+    margin-block: 1.5rem;
+    font-size: 1.6rem;
+}
+
+.header__description {
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider__carousel {
+    height: 24rem;
+    display: flex;
+    overflow: hidden;
+    max-width: 1220px;
+    transition: transform 0.5s ease;
+}
+
+.slider__carousel__img {
+    padding-inline: 0.4rem;
+    object-fit: cover;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 33.3%;
+    max-width: 33.3%;
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        margin-inline: 2rem;
+        margin-block: 2rem;
+    }
+
+    .slider__carousel__img {
+        flex-basis: 50%;
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    body {
+        margin-inline: 1rem;
+        margin-block: 2rem;
+    }
+
+    .header {
+        margin-top: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .header__description {
+        font-size: 0.8rem;
+    }
+
+    .slider__carousel__img {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
+
+.slider__btn {
+    border: none;
+    background-color: rgba(57, 91, 57, 0.615);
+    color: white;
+    min-width: 2rem;
+    height: 2rem;
+    margin-inline: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider__btn:hover {
+    background-color: rgba(18, 30, 18, 0.615);
+}
+
+
+.slider__dots {
+    display: flex;
+    margin: 1rem;
+    justify-content: center;
+}
+
+.slider__dot {
+    border-radius: 50%;
+    margin-inline: 0.3rem;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(57, 91, 57, 0.615);
+}
+
+.slider__dot:hover {
+    background-color: rgba(18, 30, 18, 0.615);
+}
