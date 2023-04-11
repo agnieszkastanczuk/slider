@@ -1,6 +1,7 @@
 const carousel = document.querySelector(".slider__carousel");
 const prevBtn = document.querySelector(".btn--prev");
 const nextBtn = document.querySelector(".btn--next");
+const dots = document.querySelectorAll(".slider__dot");
 
 const images = ['pexels-aatommy-milanese-2704910.jpg', 'pexels-alex-montes-4001653.jpg', 'pexels-alfin-auzikri-11446176.jpg', 'pexels-andy-vu-3217911.jpg', 'pexels-element-digital-1051078.jpg', 'pexels-jalessio-cesario-1906879.jpg', 'pexels-janam-thapa-12171663.jpg', 'pexels-mitch-oram-15511578.jpg', 'pexels-paulo-marcelo-martins-2412606.jpg', 'pexels-timur-kozmenko-2474691.jpg', 'pexels-tranmautritam-119777.jpg', 'pexels-zmatt-hardy-2602545.jpg']
 
@@ -19,29 +20,21 @@ function prevSlide() {
         indexFirstSlide = numberOfSlides - 1;
     }
 
-    // Update images based on screen width
-    if (window.innerWidth < 550) {
-        document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
-    } else if (window.innerWidth < 900) {
-        document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
-        document.getElementById("img-2").src = "/img/" + images[numberOfSlides - indexFirstSlide - 1];
-    } else {
-        switch (indexFirstSlide) {
-            case numberOfSlides - 2:
-                document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
-                document.getElementById("img-2").src = "/img/" + images[indexFirstSlide + 1];
-                document.getElementById("img-3").src = "/img/" + images[numberOfSlides - indexFirstSlide - 2];
-                break;
-            case numberOfSlides - 1:
-                document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
-                document.getElementById("img-2").src = "/img/" + images[numberOfSlides - indexFirstSlide - 1];
-                document.getElementById("img-3").src = "/img/" + images[numberOfSlides - indexFirstSlide];
-                break;
-            default:
-                document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
-                document.getElementById("img-2").src = "/img/" + images[indexFirstSlide + 1];
-                document.getElementById("img-3").src = "/img/" + images[indexFirstSlide + 2];
-        }
+    switch (indexFirstSlide) {
+        case numberOfSlides - 2:
+            document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
+            document.getElementById("img-2").src = "/img/" + images[indexFirstSlide + 1];
+            document.getElementById("img-3").src = "/img/" + images[numberOfSlides - indexFirstSlide - 2];
+            break;
+        case numberOfSlides - 1:
+            document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
+            document.getElementById("img-2").src = "/img/" + images[numberOfSlides - indexFirstSlide - 1];
+            document.getElementById("img-3").src = "/img/" + images[numberOfSlides - indexFirstSlide];
+            break;
+        default:
+            document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
+            document.getElementById("img-2").src = "/img/" + images[indexFirstSlide + 1];
+            document.getElementById("img-3").src = "/img/" + images[indexFirstSlide + 2];
     }
 }
 
@@ -75,7 +68,29 @@ function nextSlide() {
     }
 }
 
-
 nextBtn.addEventListener('click', function () {
     nextSlide();
+});
+
+
+//dots
+function setImages(index1, index2, index3) {
+    document.getElementById("img-1").src = "/img/" + images[index1];
+    document.getElementById("img-2").src = "/img/" + images[index2];
+    document.getElementById("img-3").src = "/img/" + images[index3];
+}
+
+dots.forEach((dot, index) => {
+    dot.addEventListener("click", function () {
+        const index1 = index * 3;
+        const index2 = index1 + 1;
+        const index3 = index1 + 2;
+
+        setImages(index1, index2, index3);
+
+        dots.forEach((dot) => {
+            dot.classList.remove("active");
+        });
+        this.classList.add("active");
+    });
 });
