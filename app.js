@@ -19,21 +19,29 @@ function prevSlide() {
         indexFirstSlide = numberOfSlides - 1;
     }
 
-    switch (indexFirstSlide) {
-        case numberOfSlides - 2:
-            document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
-            document.getElementById("img-2").src = "/img/" + images[indexFirstSlide + 1];
-            document.getElementById("img-3").src = "/img/" + images[numberOfSlides - indexFirstSlide - 2];
-            break;
-        case numberOfSlides - 1:
-            document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
-            document.getElementById("img-2").src = "/img/" + images[numberOfSlides - indexFirstSlide - 1];
-            document.getElementById("img-3").src = "/img/" + images[numberOfSlides - indexFirstSlide];
-            break;
-        default:
-            document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
-            document.getElementById("img-2").src = "/img/" + images[indexFirstSlide + 1];
-            document.getElementById("img-3").src = "/img/" + images[indexFirstSlide + 2];
+    // Update images based on screen width
+    if (window.innerWidth < 550) {
+        document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
+    } else if (window.innerWidth < 900) {
+        document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
+        document.getElementById("img-2").src = "/img/" + images[numberOfSlides - indexFirstSlide - 1];
+    } else {
+        switch (indexFirstSlide) {
+            case numberOfSlides - 2:
+                document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
+                document.getElementById("img-2").src = "/img/" + images[indexFirstSlide + 1];
+                document.getElementById("img-3").src = "/img/" + images[numberOfSlides - indexFirstSlide - 2];
+                break;
+            case numberOfSlides - 1:
+                document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
+                document.getElementById("img-2").src = "/img/" + images[numberOfSlides - indexFirstSlide - 1];
+                document.getElementById("img-3").src = "/img/" + images[numberOfSlides - indexFirstSlide];
+                break;
+            default:
+                document.getElementById("img-1").src = "/img/" + images[indexFirstSlide];
+                document.getElementById("img-2").src = "/img/" + images[indexFirstSlide + 1];
+                document.getElementById("img-3").src = "/img/" + images[indexFirstSlide + 2];
+        }
     }
 }
 
